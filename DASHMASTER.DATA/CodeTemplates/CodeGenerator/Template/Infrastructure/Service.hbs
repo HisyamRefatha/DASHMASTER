@@ -1,0 +1,45 @@
+namespace {{namespace}}Web.Component.Services
+{
+    public class {{name}}Service : I{{name}}Service
+    {
+        #region Fields and Constructor
+        private readonly IRequestHelper _request;
+
+        public {{name}}Service(IRequestHelper request)
+        {
+            _request = request;
+        }
+        #endregion
+
+        public async Task<ObjectResponse<{{name}}Response>> Get({{primary_key_type}} id, string baseUrl, string token)
+        {
+            return _request.Response(await _request.DoRequest<ObjectResponse<{{name}}Response>>(HttpMethod.Get, token, $"{baseUrl}/v1/{{name}}/get/{id}", null));
+        }
+        
+        public async Task<ListResponse<{{name}}Response>> List(ListRequest request, string baseUrl, string token)
+        {
+            return _request.Response(await _request.DoRequest<ListResponse<{{name}}Response>>(HttpMethod.Post, token, $"{baseUrl}/v1/{{name}}/list", request));
+        }
+        
+        public async Task<StatusResponse> Add({{name}}Request request, string baseUrl, string token)
+        {
+            return _request.Response(await _request.DoRequest<StatusResponse>(HttpMethod.Post, token, $"{baseUrl}/v1/{{name}}/add", request));
+        }
+        
+        public async Task<StatusResponse> Edit({{primary_key_type}} id, {{name}}Request request, string baseUrl, string token)
+        {
+            return _request.Response(await _request.DoRequest<StatusResponse>(HttpMethod.Put, token, $"{baseUrl}/v1/{{name}}/edit/{id}", request));
+        }
+        
+        public async Task<StatusResponse> Delete ({{primary_key_type}} id, string baseUrl, string token)
+        {
+            return _request.Response(await _request.DoRequest<StatusResponse>(HttpMethod.Delete, token, $"{baseUrl}/v1/{{name}}/delete/{id}", null));
+        }
+        {{>master}}
+        public async Task<StatusResponse> Active({{primary_key_type}} id, bool value, string baseUrl, string token)
+        {
+            return _request.Response(await _request.DoRequest<StatusResponse>(HttpMethod.Put, token, $"{baseUrl}/v1/{{name}}/active/{id}/{value}", null));
+        }
+        {{<master}}
+    }
+}

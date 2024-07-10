@@ -1,0 +1,12 @@
+using System;
+using System.Collections.Generic;
+using Vleko.DAL.Interface;
+
+{{#if use-data-annotations}}
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.EntityFrameworkCore;
+{{/if}}
+{{#each imports}}
+using {{import}};
+{{/each}}
