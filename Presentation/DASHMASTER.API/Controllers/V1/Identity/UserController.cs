@@ -6,7 +6,7 @@ namespace DASHMASTER.API.Controllers.V1.Identity
 {
     public class UserController : BaseController<UserController>
     {
-
+        [AllowAnonymous]
         [HttpPost(template: "login")]
         public async Task<IActionResult> Login([FromBody] LoginRequest request)
         {

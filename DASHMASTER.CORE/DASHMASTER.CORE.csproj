@@ -24,5 +24,7 @@
 
 	<ItemGroup>
 	  <Folder Include="Service\Identity\Query\" />
+	  <Folder Include="Service\Category\" />
+	  <Folder Include="Service\Product\Query\" />
 	</ItemGroup>
 </Project>
