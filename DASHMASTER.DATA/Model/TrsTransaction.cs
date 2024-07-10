@@ -7,6 +7,12 @@ namespace DASHMASTER.DATA.Model
 {
     public partial class TrsTransaction : IEntity
     {
+        public TrsTransaction()
+        {
+            TrsPayment = new HashSet<TrsPayment>();
+            TrsTransactionItems = new HashSet<TrsTransactionItems>();
+        }
+
         public Guid Id { get; set; }
         public Guid UserId { get; set; }
         public decimal TotalAmount { get; set; }
@@ -17,5 +23,7 @@ namespace DASHMASTER.DATA.Model
         public string? UpdateBy { get; set; }
 
         public virtual MstUser User { get; set; } = null!;
+        public virtual ICollection<TrsPayment> TrsPayment { get; set; }
+        public virtual ICollection<TrsTransactionItems> TrsTransactionItems { get; set; }
     }
 }

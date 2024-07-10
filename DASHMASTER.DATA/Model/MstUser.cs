@@ -9,6 +9,8 @@ namespace DASHMASTER.DATA.Model
     {
         public MstUser()
         {
+            Notification = new HashSet<Notification>();
+            Reviews = new HashSet<Reviews>();
             TrsTransaction = new HashSet<TrsTransaction>();
         }
 
@@ -23,6 +25,8 @@ namespace DASHMASTER.DATA.Model
         public string? UpdateBy { get; set; }
         public string? Token { get; set; }
 
+        public virtual ICollection<Notification> Notification { get; set; }
+        public virtual ICollection<Reviews> Reviews { get; set; }
         public virtual ICollection<TrsTransaction> TrsTransaction { get; set; }
     }
 }
