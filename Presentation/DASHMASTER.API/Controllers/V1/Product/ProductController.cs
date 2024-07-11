@@ -12,7 +12,7 @@ namespace DASHMASTER.API.Controllers.V1.Product
         public async Task<IActionResult> AddProduct([FromBody] ProductRequest request)
         {
             var add_request = _mapper.Map<AddProductRequest>(request);
-            add_request.Inputer = Token.User.Username;
+            add_request.Inputer = Token?.User?.Username;
             return Wrapper(await _mediator.Send(add_request));
         }
     }
