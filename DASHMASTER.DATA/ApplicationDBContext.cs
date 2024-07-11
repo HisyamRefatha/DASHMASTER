@@ -31,8 +31,8 @@ namespace DASHMASTER.DATA
                 entity.ToTable("INVENTORY");
 
                 entity.Property(e => e.Id)
-                    .ValueGeneratedNever()
-                    .HasColumnName("ID");
+                    .HasColumnName("ID")
+                    .HasDefaultValueSql("(newid())");
 
                 entity.Property(e => e.CreateBy)
                     .HasMaxLength(255)
@@ -70,8 +70,8 @@ namespace DASHMASTER.DATA
                 entity.ToTable("MST_CATEGORY");
 
                 entity.Property(e => e.Id)
-                    .ValueGeneratedNever()
-                    .HasColumnName("ID");
+                    .HasColumnName("ID")
+                    .HasDefaultValueSql("(newid())");
 
                 entity.Property(e => e.CreateBy)
                     .HasMaxLength(255)
@@ -196,8 +196,8 @@ namespace DASHMASTER.DATA
                 entity.ToTable("NOTIFICATION");
 
                 entity.Property(e => e.Id)
-                    .ValueGeneratedNever()
-                    .HasColumnName("ID");
+                    .HasColumnName("ID")
+                    .HasDefaultValueSql("(newid())");
 
                 entity.Property(e => e.CreateDate)
                     .HasColumnType("datetime")
@@ -223,8 +223,8 @@ namespace DASHMASTER.DATA
                 entity.ToTable("REPORTS");
 
                 entity.Property(e => e.Id)
-                    .ValueGeneratedNever()
-                    .HasColumnName("ID");
+                    .HasColumnName("ID")
+                    .HasDefaultValueSql("(newid())");
 
                 entity.Property(e => e.CreateDate)
                     .HasColumnType("datetime")
@@ -248,8 +248,8 @@ namespace DASHMASTER.DATA
                 entity.ToTable("REVIEWS");
 
                 entity.Property(e => e.Id)
-                    .ValueGeneratedNever()
-                    .HasColumnName("ID");
+                    .HasColumnName("ID")
+                    .HasDefaultValueSql("(newid())");
 
                 entity.Property(e => e.Comment)
                     .HasColumnType("text")
@@ -283,8 +283,8 @@ namespace DASHMASTER.DATA
                 entity.ToTable("TRS_PAYMENT");
 
                 entity.Property(e => e.Id)
-                    .ValueGeneratedNever()
-                    .HasColumnName("ID");
+                    .HasColumnName("ID")
+                    .HasDefaultValueSql("(newid())");
 
                 entity.Property(e => e.Amount)
                     .HasColumnType("decimal(38, 0)")
@@ -369,8 +369,8 @@ namespace DASHMASTER.DATA
                 entity.ToTable("TRS_TRANSACTION_ITEMS");
 
                 entity.Property(e => e.Id)
-                    .ValueGeneratedNever()
-                    .HasColumnName("ID");
+                    .HasColumnName("ID")
+                    .HasDefaultValueSql("(newid())");
 
                 entity.Property(e => e.CreateBy)
                     .HasMaxLength(255)

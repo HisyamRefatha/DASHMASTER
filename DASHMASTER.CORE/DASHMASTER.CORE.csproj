@@ -23,8 +23,8 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Folder Include="Service\Category\Query\" />
 	  <Folder Include="Service\Identity\Query\" />
-	  <Folder Include="Service\Category\" />
 	  <Folder Include="Service\Product\Query\" />
 	</ItemGroup>
 </Project>

@@ -75,8 +75,8 @@ namespace DASHMASTER.CORE.Service.Product.Command
 
             }catch(Exception ex) 
             {
-                _logger.LogError(ex, "Failed Add Employee", request);
-                result.Error("Failed Add Employee", ex.Message);
+                _logger.LogError(ex, "Failed Add Product", request);
+                result.Error("Failed Add Product", ex.Message);
             }
             return result;
         }
