@@ -11,4 +11,13 @@
 		<PackageReference Include="RestSharp" Version="110.2.0" />
 		<PackageReference Include="Vleko.Result" Version="1.0.0.1" />
 	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="wwwroot\assets\" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\..\DASHMASTER.CORE\DASHMASTER.CORE.csproj" />
+	  <ProjectReference Include="..\..\DASHMASTER.SHARED\DASHMASTER.SHARED.csproj" />
+	</ItemGroup>
 </Project>
