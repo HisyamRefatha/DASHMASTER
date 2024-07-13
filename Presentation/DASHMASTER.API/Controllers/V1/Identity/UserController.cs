@@ -14,7 +14,7 @@ namespace DASHMASTER.API.Controllers.V1.Identity
             return Wrapper(await _mediator.Send(request), request);
         }
 
-        [AllowAnonymous]
+        
         [HttpPost(template: "add")]
         public async Task<IActionResult> AddUser([FromBody] UserRequest request)
         {
