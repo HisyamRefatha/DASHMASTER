@@ -1,3 +1,4 @@
+using DASHMASTER.CORE.Helper;
 using DASHMASTER.WEB.Helper;
 
 public class Program
@@ -20,6 +21,8 @@ public class Program
             });
 
         var app = builder.Build();
+        builder.Services.AddSingleton<ITokenHelper, TokenHelper>();
+        builder.Services.AddSignalR();
 
         // Configure the HTTP request pipeline.
         if (!app.Environment.IsDevelopment())
@@ -39,6 +42,9 @@ public class Program
         app.MapControllerRoute(
             name: "default",
             pattern: "{controller=Home}/{action=Index}/{id?}");
+        app.MapControllerRoute(
+            name: "areas",
+            pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
 
         app.Run();
     }
