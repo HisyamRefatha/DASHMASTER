@@ -20,9 +20,9 @@ public class Program
                 opt.Cookie.Name = HelperClient.AUTHENTICATION_SCHEMA;
             });
 
-        var app = builder.Build();
-        builder.Services.AddSingleton<ITokenHelper, TokenHelper>();
         builder.Services.AddSignalR();
+        var app = builder.Build();
+        //builder.Services.AddSingleton<ITokenHelper, TokenHelper>();
 
         // Configure the HTTP request pipeline.
         if (!app.Environment.IsDevelopment())
