@@ -20,7 +20,9 @@ public class Program
             });
 
         builder.Services.AddSignalR();
-        //builder.Services.AddSingleton<ITokenHelper, TokenHelper>();
+        builder.Services.AddSingleton<ITokenHelper, TokenHelper>();
+        builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+        builder.Services.AddTransient<IRestAPIHelper, RestAPIHelper>();
         var app = builder.Build();
 
         // Configure the HTTP request pipeline.
