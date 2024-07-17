@@ -1,4 +1,3 @@
-using DASHMASTER.CORE.Helper;
 using DASHMASTER.WEB.Helper;
 
 public class Program
@@ -21,8 +20,8 @@ public class Program
             });
 
         builder.Services.AddSignalR();
-        var app = builder.Build();
         //builder.Services.AddSingleton<ITokenHelper, TokenHelper>();
+        var app = builder.Build();
 
         // Configure the HTTP request pipeline.
         if (!app.Environment.IsDevelopment())

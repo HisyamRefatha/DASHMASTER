@@ -9,12 +9,12 @@ namespace DASHMASTER.WEB.Helper
         public const string PAGE_COOKIE = "DASHMASTER.Page";
 
         private readonly ILogger _logger;
-        private string API_URL;
+        private static string API_URL;
         public HelperClient(IConfiguration configuration,
             ILogger<HelperClient> logger
             )
         {
-            API_URL = configuration.GetValue<string>("APIBaseUrl");
+            API_URL = configuration.GetValue<string>("APIUrl");
             _logger = logger;
         }
 
@@ -36,7 +36,7 @@ namespace DASHMASTER.WEB.Helper
                             Email = claims?.FirstOrDefault(x => x.Type.Equals(ClaimTypes.Email))?.Value,
                             Role = claims?.FirstOrDefault(x => x.Type.Equals(ClaimTypes.Role))?.Value
                         },
-                        //BaseApiUrl = API_URL
+                        BaseApiUrl = API_URL
                     };
                     return (true, token);
                 }
