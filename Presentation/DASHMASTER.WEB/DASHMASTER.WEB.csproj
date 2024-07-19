@@ -13,10 +13,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Folder Include="wwwroot\assets\" />
-	</ItemGroup>
-
-	<ItemGroup>
 	  <ProjectReference Include="..\..\DASHMASTER.CORE\DASHMASTER.CORE.csproj" />
 	  <ProjectReference Include="..\..\DASHMASTER.SHARED\DASHMASTER.SHARED.csproj" />
 	</ItemGroup>
