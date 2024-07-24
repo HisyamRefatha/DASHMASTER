@@ -16,4 +16,8 @@
 	  <ProjectReference Include="..\..\DASHMASTER.CORE\DASHMASTER.CORE.csproj" />
 	  <ProjectReference Include="..\..\DASHMASTER.SHARED\DASHMASTER.SHARED.csproj" />
 	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="wwwroot\Areas\" />
+	</ItemGroup>
 </Project>

@@ -1,4 +1,11 @@
-﻿<!DOCTYPE html>
+﻿@using Newtonsoft.Json
+@{
+    TokenModel tokenModel = ViewBag.Token;
+    TokenModel url = ViewBag.BaseApiUrl;
+    var userLogin = JsonConvert.SerializeObject(ViewBag.is_auth);
+}
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -46,18 +53,27 @@
             </div>
         </div>
     </div>
-    //Mandatory JS
+    <!--Mandatory JS-->
+    <script>
+        const _token = @Html.Raw(JsonConvert.SerializeObject(tokenModel.RawToken));
+        const _apiUrl = @Html.Raw(JsonConvert.SerializeObject(tokenModel.BaseApiUrl));
+    </script>
     <script src="~/assets/plugins/global/plugins.bundle.js"></script>
     <script src="~/assets/js/scripts.bundle.js"></script>
-    //Used for this specific page only
+    <!--Used for this specific page only-->
     <script src="~/assets/plugins/custom/datatables/datatables.bundle.js"></script>
     <script src="~/assets/plugins/custom/vis-timeline/vis-timeline.bundle.js"></script>
-    //Used for this specific page only
+    <!--Used for this specific page only-->
     <script src="~/assets/js/widgets.bundle.js"></script>
     <script src="~/assets/js/custom/widgets.js"></script>
     <script src="~/assets/js/custom/apps/chat/chat.js"></script>
     <script src="~/assets/js/custom/utilities/modals/create-app.js"></script>
     <script src="~/assets/js/custom/utilities/modals/users-search.js"></script>
+    <!--Script Helper-->
+    <script src="~/Scripts/date_helper.js"></script>
+    <script src="~/Scripts/helper.js"></script>
+    <script src="~/Scripts/referensi.js"></script>
+    <script src="~/Scripts/request.js"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
