@@ -34,6 +34,7 @@ namespace DASHMASTER.WEB.Controllers
 
             _tokenData = decode_token.Token;
             ViewBag.Token = decode_token.Token;
+            ViewBag.Role = _tokenData.User.Role.ToString();
             await base.OnActionExecutionAsync(context, next);
 
             ViewBag.Path = Request.Path.Value;

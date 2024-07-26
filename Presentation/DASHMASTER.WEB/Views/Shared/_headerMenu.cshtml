@@ -1146,11 +1146,10 @@
 		<div class="app-container container-xxl app-container-fit-mobile d-flex align-items-stretch" id="kt_app_header_tertiary_container">
 			<div class="app-header-menu d-flex align-items-stretch w-100">
 				<div class="menu menu-rounded menu-active-bg menu-state-primary menu-column menu-lg-row menu-title-gray-700 menu-icon-gray-500 menu-arrow-gray-500 menu-bullet-gray-500 my-5 my-lg-0 align-items-stretch fw-semibold px-2 px-lg-0" id="kt_app_header_menu" data-kt-menu="true">
-					@if(role.ToString() == "admin"){
-						<div data-kt-menu-trigger="{default: 'click', lg: 'hover'}" data-kt-menu-placement="bottom-start" class="menu-item here show menu-here-bg menu-lg-down-accordion me-0 me-lg-2">
+					<div data-kt-menu-trigger="{default: 'click', lg: 'hover'}" data-kt-menu-placement="bottom-start" class="menu-item here show menu-here-bg menu-lg-down-accordion me-0 me-lg-2">
 						<!--begin:Menu link-->
 						<span class="menu-link py-3">
-							<span class="menu-title">Dashboards</span>
+							<span class="menu-title">Menus</span>
 							<span class="menu-arrow d-lg-none"></span>
 						</span>
 						
@@ -1165,54 +1164,52 @@
 										<!--begin:Row-->
 										<div class="row">
 											<!--begin:Col-->
-											<div class="col-lg-6 mb-3">
+											@if(ViewBag.Role == "admin")
+											{
+												<div class="col-lg-6 mb-3">
 												
-												<div class="menu-item p-0 m-0">
-													<!--begin:Menu link-->
-													<a href="index.html" class="menu-link">
-														<span class="menu-custom-icon d-flex flex-center flex-shrink-0 rounded w-40px h-40px me-3">
-															<i class="ki-duotone ki-element-11 text-primary fs-1">
-																<span class="path1"></span>
-																<span class="path2"></span>
-																<span class="path3"></span>
-																<span class="path4"></span>
-															</i>
-														</span>
-														<span class="d-flex flex-column">
-															<span class="fs-6 fw-bold text-gray-800">Default</span>
-															<span class="fs-7 fw-semibold text-muted">Reports & statistics</span>
-														</span>
-													</a>
+													<div class="menu-item p-0 m-0">
+														<!--begin:Menu link-->
+														<a href="index.html" class="menu-link">
+															<span class="menu-custom-icon d-flex flex-center flex-shrink-0 rounded w-40px h-40px me-3">
+																<i class="ki-duotone ki-element-11 text-primary fs-1">
+																	<span class="path1"></span>
+																	<span class="path2"></span>
+																	<span class="path3"></span>
+																	<span class="path4"></span>
+																</i>
+															</span>
+															<span class="d-flex flex-column">
+																<span class="fs-6 fw-bold text-gray-800">Dashboard</span>
+																<span class="fs-7 fw-semibold text-muted">Reports & statistics</span>
+															</span>
+														</a>
 													
+													</div>
+												
 												</div>
+												<div class="col-lg-6 mb-3">
 												
-											</div>
-											<!--end:Col-->
-											<!--begin:Col-->
-											<div class="col-lg-6 mb-3">
-												
-												<div class="menu-item p-0 m-0">
-													<!--begin:Menu link-->
-													<a href="dashboards/ecommerce.html" class="menu-link active">
-														<span class="menu-custom-icon d-flex flex-center flex-shrink-0 rounded w-40px h-40px me-3">
-															<i class="ki-duotone ki-basket text-danger fs-1">
-																<span class="path1"></span>
-																<span class="path2"></span>
-																<span class="path3"></span>
-																<span class="path4"></span>
-															</i>
-														</span>
-														<span class="d-flex flex-column">
-															<span class="fs-6 fw-bold text-gray-800">eCommerce</span>
-															<span class="fs-7 fw-semibold text-muted">Sales reports</span>
-														</span>
-													</a>
+													<div class="menu-item p-0 m-0">
+														<!--begin:Menu link-->
+														<a href="dashboards/ecommerce.html" class="menu-link active">
+															<span class="menu-custom-icon d-flex flex-center flex-shrink-0 rounded w-40px h-40px me-3">
+																<i class="ki-duotone ki-basket text-danger fs-1">
+																	<span class="path1"></span>
+																	<span class="path2"></span>
+																	<span class="path3"></span>
+																	<span class="path4"></span>
+																</i>
+															</span>
+															<span class="d-flex flex-column">
+																<span class="fs-6 fw-bold text-gray-800">eCommerce</span>
+																<span class="fs-7 fw-semibold text-muted">Sales reports</span>
+															</span>
+														</a>
 													
-												</div>
+													</div>
 												
-											</div>
-											<!--end:Col-->
-											<!--begin:Col-->
+												</div>
 											<div class="col-lg-6 mb-3">
 												
 												<div class="menu-item p-0 m-0">
@@ -1225,21 +1222,19 @@
 															</i>
 														</span>
 														<span class="d-flex flex-column">
-															<span class="fs-6 fw-bold text-gray-800">Projects</span>
-															<span class="fs-7 fw-semibold text-muted">Tasts, graphs & charts</span>
+															<span class="fs-6 fw-bold text-gray-800">Setting</span>
+															<span class="fs-7 fw-semibold text-muted">Manage User & Role</span>
 														</span>
 													</a>
 													
 												</div>
 												
 											</div>
-											<!--end:Col-->
-											<!--begin:Col-->
 											<div class="col-lg-6 mb-3">
 												
 												<div class="menu-item p-0 m-0">
 													<!--begin:Menu link-->
-													<a href="dashboards/online-courses.html" class="menu-link">
+													<a href="/MasterData/Index" class="menu-link">
 														<span class="menu-custom-icon d-flex flex-center flex-shrink-0 rounded w-40px h-40px me-3">
 															<i class="ki-duotone ki-color-swatch text-success fs-1">
 																<span class="path1"></span>
@@ -1266,16 +1261,14 @@
 															</i>
 														</span>
 														<span class="d-flex flex-column">
-															<span class="fs-6 fw-bold text-gray-800">Online Courses</span>
-															<span class="fs-7 fw-semibold text-muted">Student progress</span>
+															<span class="fs-6 fw-bold text-gray-800">Master Data</span>
+															<span class="fs-7 fw-semibold text-muted">Manage All Master Data</span>
 														</span>
 													</a>
 													
 												</div>
 												
 											</div>
-											<!--end:Col-->
-											<!--begin:Col-->
 											<div class="col-lg-6 mb-3">
 												
 												<div class="menu-item p-0 m-0">
@@ -1290,14 +1283,15 @@
 															</i>
 														</span>
 														<span class="d-flex flex-column">
-															<span class="fs-6 fw-bold text-gray-800">Marketing</span>
-															<span class="fs-7 fw-semibold text-muted">Campaings & conversions</span>
+															<span class="fs-6 fw-bold text-gray-800">Transaction</span>
+															<span class="fs-7 fw-semibold text-muted">Transaction & Report</span>
 														</span>
 													</a>
 													
 												</div>
 												
 											</div>
+											}
 											<!--end:Col-->
 											<!--begin:Col-->
 											<div class="col-lg-6 mb-3">
@@ -1480,7 +1474,6 @@
 						</div>
 						
 					</div>
-					}
 			</div>
 		</div>
 	</div>

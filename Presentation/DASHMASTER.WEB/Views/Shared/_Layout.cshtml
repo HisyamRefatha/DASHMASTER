@@ -2,7 +2,8 @@
 @{
     TokenModel tokenModel = ViewBag.Token;
     TokenModel url = ViewBag.BaseApiUrl;
-    var userLogin = JsonConvert.SerializeObject(ViewBag.is_auth);
+    TokenUserModel role = new TokenUserModel();
+    role.Role = ViewBag.Role;
 }
 
 <!DOCTYPE html>
@@ -57,6 +58,7 @@
     <script>
         const _token = @Html.Raw(JsonConvert.SerializeObject(tokenModel.RawToken));
         const _apiUrl = @Html.Raw(JsonConvert.SerializeObject(tokenModel.BaseApiUrl));
+        const _role = @Html.Raw(JsonConvert.SerializeObject(role.Role));
     </script>
     <script src="~/assets/plugins/global/plugins.bundle.js"></script>
     <script src="~/assets/js/scripts.bundle.js"></script>
