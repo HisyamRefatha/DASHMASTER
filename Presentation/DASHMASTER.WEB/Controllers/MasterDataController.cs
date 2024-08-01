@@ -23,5 +23,10 @@ namespace DASHMASTER.WEB.Controllers
 		{
 			return View();
 		}
+
+		public IActionResult User()
+		{
+			return View();
+		}
 	}
 }
