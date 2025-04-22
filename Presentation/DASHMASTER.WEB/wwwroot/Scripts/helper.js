@@ -20,6 +20,19 @@ function ShowNotif(message, type) {
     $.notify(message, type);
 }
 
+function StandardElement(nama) {
+    var element = {
+        table: `#${nama}-table`,
+        tbody: `#${nama}-tbody`,
+        from: `#${nama}-from_page`,
+        to: `#${nama}-to_page`,
+        total: `#${nama}-total_count`,
+        pagination: `#${nama}-pagination`,
+        item_pagination: `${nama}-item`
+    }
+    return element;
+}
+
 function AlertMessage(title, message, callback, icon) {
     swal({
         title: title,
@@ -67,34 +80,81 @@ function ConfirmMessage(message, callback) {
 }
 
 function SetPagination(pagination_id, page, totalPage, function_name, function_param) {
+    let paginationHTML = `
+        <div class="row">
+            <div id="" class="col-sm-12 col-md-5 d-flex align-items-center justify-content-center justify-content-md-start dt-toolbar">
+                <div>
+                    <select name="kt_ecommerce_products_table_length" aria-controls="kt_ecommerce_products_table" class="form-select form-select-solid form-select-sm" id="dt-length-0">
+                        <option value="10">10</option>
+                        <option value="25">25</option>
+                        <option value="50">50</option>
+                        <option value="100">100</option>
+                    </select>
+                    <label for="dt-length-0"></label>
+                </div>
+            </div>
+            <div id="product-pagination" class="col-sm-12 col-md-7 d-flex align-items-center justify-content-center justify-content-md-end">
+                <div class="dt-paging paging_simple_numbers">
+                    <ul class="pagination">
+    `;
+
+    // Previous button
     if (page == 1) {
-        $(`#${pagination_id}`).append('<li class="paginate_button page-item"><a href="#" class="page-link" style="font-size: 20px; padding-top: 5px;"><span class="text-primary" aria-hidden="true">&laquo;</span></a></li>');
+        paginationHTML += `<li class="dt-paging-button page-item disabled">
+            <a class="page-link previous" aria-controls="kt_ecommerce_products_table" aria-disabled="true" aria-label="Previous" data-dt-idx="previous" tabindex="-1">
+                <i class="previous"></i>
+            </a>
+        </li>`;
     } else {
-        var firstPageParam = function_param !== undefined ? `('${function_param}', 1)` : `(1)`;
-        var pageParam = function_param !== undefined ? `('${function_param}', ${(page - 1)})` : `(${(page - 1)})`;
-        $(`#${pagination_id}`).append(`<li class="paginate_button page-item"><a href="#" class="page-link" onclick="${function_name}${pageParam}" style="font-size: 20px; padding-top: 1px;"><span class="text-primary" aria-hidden="true">&laquo;</span></a></li>`);
+        let pageParam = function_param !== undefined ? `('${function_param}', ${page - 1})` : `(${page - 1})`;
+        paginationHTML += `<li class="dt-paging-button page-item">
+            <a href="#" class="page-link previous" onclick="${function_name}${pageParam}" aria-controls="kt_ecommerce_products_table" aria-label="Previous" data-dt-idx="previous" tabindex="0">
+                <i class="previous"></i>
+            </a>
+        </li>`;
     }
 
+    // Page numbers
     var i = page == 1 ? page : page == 2 ? page - 1 : page == 3 ? page - 2 : page == 4 ? page - 3 : page == totalPage ? totalPage - 4 : page == totalPage - 1 ? totalPage - 4 : page == totalPage - 2 ? totalPage - 4 : page == totalPage - 3 ? totalPage - 5 : page == totalPage - 4 ? totalPage - 6 : page - 2;
     var toPage = totalPage <= 5 ? totalPage : page == 1 ? page + 4 : page == 2 ? page + 3 : page == 3 ? page + 2 : page == totalPage ? totalPage : page == totalPage - 1 ? totalPage : page == totalPage - 2 ? totalPage : page == totalPage - 3 ? totalPage - 1 : page + 2;
+
     for (i; i <= toPage; i++) {
         if (i == page) {
-            $(`#${pagination_id}`).append(`<li class="paginate_button page-item"><a href="#" class="page-link"><b>${i}</b></a></li>`);
+            paginationHTML += `<li class="dt-paging-button page-item active">
+                <a href="#" class="page-link" aria-controls="kt_ecommerce_products_table" aria-current="page" data-dt-idx="${i}" tabindex="0">${i}</a>
+            </li>`;
         } else {
             var pageParam = function_param !== undefined ? `('${function_param}', ${i})` : `(${i})`;
-
-            $(`#${pagination_id}`).append(`<li class="paginate_button page-item"><a href="#" class="page-link" onclick="${function_name}${pageParam}"><b>${i}</b></a></li>`);
+            paginationHTML += `<li class="dt-paging-button page-item">
+                <a href="#" class="page-link" onclick="${function_name}${pageParam}" aria-controls="kt_ecommerce_products_table" data-dt-idx="${i}" tabindex="0">${i}</a>
+            </li>`;
         }
     }
 
+    // Next button
     if (page == totalPage) {
-        $(`#${pagination_id}`).append('<li class="paginate_button page-item"><a href="#" class="page-link" style="font-size: 20px; padding-top: 5px;"><span class="text-primary" aria-hidden="true">&raquo;</span></a></li>');
+        paginationHTML += `<li class="dt-paging-button page-item disabled">
+            <a class="page-link next" aria-controls="kt_ecommerce_products_table" aria-label="Next" data-dt-idx="next" tabindex="-1">
+                <i class="next"></i>
+            </a>
+        </li>`;
     } else {
-        var pageParam = function_param !== undefined ? `('${function_param}', ${(page + 1)})` : `(${(page + 1)})`;
-        var lastPageParam = function_param !== undefined ? `('${function_param}', ${totalPage})` : `(${totalPage})`;
-
-        $(`#${pagination_id}`).append(`<li class="paginate_button page-item"><a href="#" class="page-link" onclick="${function_name}${pageParam}" style="font-size: 20px; padding-top: 1px;"><span class="text-primary" aria-hidden="true">&raquo;</span></a></li>`);
+        var pageParam = function_param !== undefined ? `('${function_param}', ${page + 1})` : `(${page + 1})`;
+        paginationHTML += `<li class="dt-paging-button page-item">
+            <a href="#" class="page-link next" onclick="${function_name}${pageParam}" aria-controls="kt_ecommerce_products_table" aria-label="Next" data-dt-idx="next" tabindex="0">
+                <i class="next"></i>
+            </a>
+        </li>`;
     }
+
+    paginationHTML += `
+                    </ul>
+                </div>
+            </div>
+        </div>
+    `;
+
+    $(`#${pagination_id}`).html(paginationHTML);
 }
 
 function SetTableData(haveData, colspan, el, data, callback) {
